@@ -6,6 +6,11 @@ namespace Logic
 {
     public class Unit : EducationalElement
     {
-        public List<Module> Listmodules;
+        public List<Module> Listmodules = new List<Module>();
+
+        public Unit[] ListModules()
+        {
+            return ListModules().ToArray();
+        }
     } 
 }

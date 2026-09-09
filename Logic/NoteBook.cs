@@ -6,6 +6,11 @@ namespace Logic
 {
     public class NoteBook
     {
-        public List<Unit> ListUnits;
+        public List<Unit> ListUnit = new List<Unit>();
+
+        public Unit[] ListUnits()
+        {
+            return ListUnits().ToArray();
+        }
     }
 }
