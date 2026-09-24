@@ -28,5 +28,10 @@
             }
         }
 
+        public override string ToString()
+        {
+            return name + " (" + coef.ToString() + ")";
+        }
+
     }
 }
