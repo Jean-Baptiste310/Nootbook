@@ -1,5 +1,4 @@
 <Solution>
-  <Folder Name="/Ressource/" />
   <Project Path="Logic/Logic.csproj" />
   <Project Path="Nootbook/Nootbook.csproj" />
   <Project Path="TestLogic/TestLogic.csproj" />

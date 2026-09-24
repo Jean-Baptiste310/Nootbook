@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Ressource\pngtree-classic-design-of-an-open-book-and-quill-pen-png-image_14269230.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Ressource\pngtree-classic-design-of-an-open-book-and-quill-pen-png-image_14269230.png" />
   </ItemGroup>
 
 </Project>
