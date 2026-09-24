@@ -10,7 +10,7 @@ namespace Logic
 
         public Unit[] ListUnits()
         {
-            return ListUnits().ToArray();
+            return ListUnit.ToArray();
         }
     }
 }
