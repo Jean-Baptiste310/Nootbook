@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestLogic
 {
-    public class TestNootbook
+    public class TestNotebook
     {
         [Fact]
         public void ListUnits()
