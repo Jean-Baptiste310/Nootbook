@@ -35,7 +35,7 @@
                 </Style>
             </Canvas.Resources>
 
-            <Button Content="Saisir les matière" Canvas.Left="100" Canvas.Top="90"/>
+            <Button Content="Saisir les matière" Canvas.Left="100" Canvas.Top="90" Click="GoEditUnits"/>
             <Button Content="Rentrer un examen" Canvas.Right="100" Canvas.Top="90"/>
             <Button Content="Afficher les moyennes" Canvas.Left="350" Canvas.Top="350"/>
 

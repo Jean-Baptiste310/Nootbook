@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,34 @@ namespace Nootbook
     /// </summary>
     public partial class EditUnitsWindow : Window
     {
-        public EditUnitsWindow()
+        private NoteBook notebook;
+        public EditUnitsWindow(NoteBook notebook)
         {
             InitializeComponent();
+
+            this.notebook = notebook;
+
+            DrawUnits();
+        }
+
+        private void DrawUnits()
+        {
+            var list = notebook.ListUnits();
+            unit.Items.Clear();
+            foreach (var item in list)
+                unit.Items.Add(item);
+        }
+
+        private void listunit(object sender, MouseButtonEventArgs e)
+        {
+            if (unit.SelectedItem is Unit u)
+            {
+                EditElementWindow third = new EditElementWindow(u);
+                if (third.ShowDialog() == true)
+                {
+                    DrawUnits();
+                }
+            }
         }
     }
 }

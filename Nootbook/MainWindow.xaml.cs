@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Logic;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,18 @@ namespace Nootbook
     /// </summary>
     public partial class MainWindow : Window
     {
+        private NoteBook notebook;
         public MainWindow()
         {
             InitializeComponent();
+
+            notebook = new NoteBook();
+        }
+
+        private void GoEditUnits(object sender, RoutedEventArgs e)
+        {
+            EditUnitsWindow second = new EditUnitsWindow(notebook);
+            second.Show();
         }
     }
 }
