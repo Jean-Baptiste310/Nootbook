@@ -9,6 +9,7 @@ namespace Logic
         public List<Unit> ListUnit = new List<Unit>();
         public List<Module> ListModule = new List<Module>();
 
+
         public Unit[] ListUnits()
         {
             return ListUnit.ToArray();
@@ -28,7 +29,25 @@ namespace Logic
 
         public Module[] ListModules()
         {
-            return ListModule.ToArray();
+            List<Module> modules = new List<Module>();
+            foreach (Unit unit in ListUnit)
+            {
+                foreach(Module module in unit.ListModules())
+                {
+                    if (!modules.Contains(module))
+                    {
+                        modules.Add(module);
+                    }
+                }
+            }
+            foreach(Exam exam in exams)
+            {
+                if (!modules.Contains(exam))
+                {
+                    modules.Add(exam.Module);
+                }
+            }
+            return modules.ToArray();
         }
 
         public void AddModule(Module module)
@@ -42,5 +61,7 @@ namespace Logic
         {
             ListModule.Remove(module);
         }
+
+        
     }
 }
