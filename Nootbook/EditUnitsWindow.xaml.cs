@@ -27,6 +27,7 @@ namespace Nootbook
             this.notebook = notebook;
 
             DrawUnits();
+            DrawModules();
         }
 
         private void DrawUnits()
@@ -85,20 +86,78 @@ namespace Nootbook
 
         private void DrawModules()
         {
+            Modules.Items.Clear();
+
             if (units.SelectedItem is Unit unit)
             {
-                var list = unit.ListModules();
-                Modules.Items.Clear();
-                foreach (Logic.Module m in list)
+                foreach (Logic.Module m in unit.ListModules())
+                {
                     Modules.Items.Add(m);
-
-                
+                }
             }
         }
 
         private void SelectUnit(object sender, SelectionChangedEventArgs e)
         {
             DrawModules();
+        }
+
+        private void Addmodule(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (units.SelectedItem is Unit unit)
+                {
+                    Logic.Module newModule = new Logic.Module();
+
+                    EditElementWindow third = new EditElementWindow(newModule);
+
+                    if (third.ShowDialog() == true)
+                    {
+                        unit.Listmodules.Add(newModule);
+                        DrawModules();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select a unit first.");
+                }
+                }
+                catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+
+        private void Removemodule(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (units.SelectedItem is Unit unit &&
+                    Modules.SelectedItem is Logic.Module module)
+                {
+                    unit.Listmodules.Remove(module);
+                    DrawModules();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        private void listmodule(object sender, MouseButtonEventArgs e)
+        {
+            if (Modules.SelectedItem is Logic.Module m)
+            {
+                EditElementWindow third = new EditElementWindow(m);
+
+                if (third.ShowDialog() == true)
+                {
+                    DrawModules();
+                }
+            }
         }
     }
 }

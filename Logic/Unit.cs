@@ -14,12 +14,6 @@ namespace Logic
             return Listmodules.ToArray();
         }
 
-        public Unit()
-        {
-            Module test = new Module();
-            test.Name = "test";
-            test.Coef = 1;
-            Listmodules.Add(test);
-        }
+        
     } 
 }

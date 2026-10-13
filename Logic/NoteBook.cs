@@ -7,6 +7,7 @@ namespace Logic
     public class NoteBook
     {
         public List<Unit> ListUnit = new List<Unit>();
+        public List<Module> ListModule = new List<Module>();
 
         public Unit[] ListUnits()
         {
@@ -23,6 +24,23 @@ namespace Logic
         public void RemoveUnit(Unit unit)
         {
             ListUnit.Remove(unit);
+        }
+
+        public Module[] ListModules()
+        {
+            return ListModule.ToArray();
+        }
+
+        public void AddModule(Module module)
+        {
+            if (ListUnit.Find((u) => { return u.Name == module.Name; }) != null)
+                throw new Exception("An unit with this name is already exit");
+            ListModule.Add(module);
+        }
+
+        public void RemoveModule(Module module)
+        {
+            ListModule.Remove(module);
         }
     }
 }
