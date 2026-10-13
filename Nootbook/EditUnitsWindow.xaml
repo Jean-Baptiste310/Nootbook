@@ -41,7 +41,7 @@
 
             <ListBox x:Name="unit"  Width="170" Height="112" Canvas.Left="50" Canvas.Top="100" MouseDoubleClick="listunit"/>
 
-            <Button Content="Add" Canvas.Left="60" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65"/>
+            <Button Content="Add" Canvas.Left="60" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" Click="Addunit"/>
             <Button Content="Remove" Canvas.Left="140" Canvas.Top="220" Width="65"/>
         </Canvas>
     </Grid>

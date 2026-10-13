@@ -47,5 +47,23 @@ namespace Nootbook
                 }
             }
         }
+
+        private void Addunit(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Unit newUnit = new Unit();
+                EditElementWindow third = new EditElementWindow(newUnit);
+                if (third.ShowDialog() == true)
+                {
+                    notebook.AddUnit(newUnit);
+                    DrawUnits();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
     }
 }

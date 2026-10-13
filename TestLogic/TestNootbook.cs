@@ -38,5 +38,10 @@ namespace TestLogic
             Assert.Equal(2, units.Length);
             Assert.Same(u2, units[1]); 
         }
+        [Fact]
+        public void Testremove()
+        {
+
+        }
     }
 }
