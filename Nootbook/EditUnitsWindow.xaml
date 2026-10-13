@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nootbook"
         mc:Ignorable="d"
-        Title="EditUnitsWindow" Height="350" Width="300">
+        Title="EditUnitsWindow" Height="350" Width="600">
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -36,13 +36,23 @@
                 </Style>
             </Canvas.Resources>
 
-            <Label Content="Course untis :" Canvas.Left="50" Canvas.Top="70" FontSize="15"/>
+            <Label Content="Course untis :" Canvas.Left="70" Canvas.Top="70" FontSize="15"/>
 
 
-            <ListBox x:Name="units"  Width="170" Height="112" Canvas.Left="50" Canvas.Top="100" MouseDoubleClick="listunit"/>
+            <ListBox x:Name="units"  Width="170" Height="112" Canvas.Left="70" Canvas.Top="100" MouseDoubleClick="listunit"/>
 
-            <Button Content="Add" Canvas.Left="60" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" Click="Addunit"/>
-            <Button Content="Remove" Canvas.Left="140" Canvas.Top="220" Width="65" Click="Removeunit"/>
+            <Button Content="Add" Canvas.Left="80" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" Click="Addunit"/>
+            <Button Content="Remove" Canvas.Left="164" Canvas.Top="220" Width="65" Click="Removeunit" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+
+
+            <Label Content="Modules :" Canvas.Left="350" Canvas.Top="70" FontSize="15"/>
+
+
+            <ListBox x:Name="Modules"  Width="170" Height="112" Canvas.Left="350" Canvas.Top="100" MouseDoubleClick="listmodule"/>
+
+            <Button Content="Add" Canvas.Left="361" Canvas.Top="220" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" Click="Addmodule"/>
+            <Button Content="Remove" Canvas.Left="444" Canvas.Top="220" Width="65" Click="Removemodule" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
     </Grid>
 </Window>

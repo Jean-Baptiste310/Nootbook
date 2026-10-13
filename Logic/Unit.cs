@@ -8,9 +8,9 @@ namespace Logic
     {
         public List<Module> Listmodules = new List<Module>();
 
-        public Unit[] ListModules()
+        public Module[] ListModules()
         {
-            return ListModules().ToArray();
+            return Listmodules.ToArray();
         }
     } 
 }
