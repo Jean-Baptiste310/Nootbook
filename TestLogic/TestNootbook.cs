@@ -16,5 +16,27 @@ namespace TestLogic
 
             Assert.Empty(result);
         }
+        [Fact]
+        public void Testadd()
+        {
+            NoteBook noteBook = new NoteBook();
+
+            Unit unit = new Unit();
+            unit.Name = "Test";
+            unit.Coef = 1;
+            noteBook.AddUnit(unit);
+            var units = noteBook.ListUnits();
+            Assert.Single(units);
+            Assert.Same(unit, units[0]);
+            var u2 = new Unit();
+            u2.Name = "Test";
+            u2.Coef = 2;
+            Assert.Throws<Exception>(() => { noteBook.AddUnit(u2); });
+            u2.Name="Test2";
+            noteBook.AddUnit(u2);
+            units = noteBook.ListUnits();
+            Assert.Equal(2, units.Length);
+            Assert.Same(u2, units[1]); 
+        }
     }
 }
