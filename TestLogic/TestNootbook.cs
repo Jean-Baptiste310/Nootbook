@@ -41,7 +41,31 @@ namespace TestLogic
         [Fact]
         public void Testremove()
         {
+            NoteBook noteBook = new NoteBook();
 
+            Unit unit = new Unit();
+            unit.Name = "Test";
+            unit.Coef = 1;
+            noteBook.AddUnit(unit);
+
+            Unit u2 = new Unit();
+            u2.Name = "Test2";
+            u2.Coef = 2;
+            noteBook.AddUnit(u2);
+
+            var units = noteBook.ListUnits();
+            Assert.Equal(2, units.Length);
+
+            noteBook.RemoveUnit(unit);
+
+            units = noteBook.ListUnits();
+            Assert.Single(units);
+            Assert.Same(u2, units[0]);
+
+            noteBook.RemoveUnit(u2);
+
+            units = noteBook.ListUnits();
+            Assert.Empty(units);
         }
     }
 }

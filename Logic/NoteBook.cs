@@ -22,8 +22,6 @@ namespace Logic
 
         public void RemoveUnit(Unit unit)
         {
-            if (ListUnit.Find((u) => { return u.Name == unit.Name; }) != null)
-                throw new Exception("An unit with this name is already exit");
             ListUnit.Remove(unit);
         }
     }

@@ -31,14 +31,14 @@ namespace Nootbook
         private void DrawUnits()
         {
             var list = notebook.ListUnits();
-            unit.Items.Clear();
+            units.Items.Clear();
             foreach (var item in list)
-                unit.Items.Add(item);
+                units.Items.Add(item);
         }
 
         private void listunit(object sender, MouseButtonEventArgs e)
         {
-            if (unit.SelectedItem is Unit u)
+            if (units.SelectedItem is Unit u)
             {
                 EditElementWindow third = new EditElementWindow(u);
                 if (third.ShowDialog() == true)
@@ -57,6 +57,22 @@ namespace Nootbook
                 if (third.ShowDialog() == true)
                 {
                     notebook.AddUnit(newUnit);
+                    DrawUnits();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        private void Removeunit(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (units.SelectedItem is Unit unit)
+                {
+                    notebook.RemoveUnit(unit);
                     DrawUnits();
                 }
             }
