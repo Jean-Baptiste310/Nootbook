@@ -1,6 +1,7 @@
 ﻿using Logic;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -80,6 +81,24 @@ namespace Nootbook
             {
                 MessageBox.Show(x.Message);
             }
+        }
+
+        private void DrawModules()
+        {
+            if (units.SelectedItem is Unit unit)
+            {
+                var list = unit.ListModules();
+                Modules.Items.Clear();
+                foreach (Logic.Module m in list)
+                    Modules.Items.Add(m);
+
+                
+            }
+        }
+
+        private void SelectUnit(object sender, SelectionChangedEventArgs e)
+        {
+            DrawModules();
         }
     }
 }

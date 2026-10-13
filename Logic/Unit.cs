@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Logic
@@ -11,6 +12,14 @@ namespace Logic
         public Module[] ListModules()
         {
             return Listmodules.ToArray();
+        }
+
+        public Unit()
+        {
+            Module test = new Module();
+            test.Name = "test";
+            test.Coef = 1;
+            Listmodules.Add(test);
         }
     } 
 }
