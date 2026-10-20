@@ -30,5 +30,11 @@ namespace Nootbook
             EditUnitsWindow second = new EditUnitsWindow(notebook);
             second.Show();
         }
+
+        private void GocreateExam(object sender, RoutedEventArgs e)
+        {
+            Examen window = new Examen(this.notebook);
+            window.ShowDialog();
+        }
     }
 }

@@ -88,13 +88,13 @@ namespace Nootbook
         {
             Modules.Items.Clear();
 
-            if (units.SelectedItem is Unit unit)
-            {
-                foreach (Logic.Module m in unit.ListModules())
-                {
-                    Modules.Items.Add(m);
-                }
-            }
+    if (units.SelectedItem is Unit unit)
+    {
+        foreach (Logic.Module m in unit.ListModules())
+        {
+            Modules.Items.Add(m);
+        }
+    }
         }
 
         private void SelectUnit(object sender, SelectionChangedEventArgs e)

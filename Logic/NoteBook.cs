@@ -8,7 +8,7 @@ namespace Logic
     {
         public List<Unit> ListUnit = new List<Unit>();
         public List<Module> ListModule = new List<Module>();
-
+        public List<Exam> exams = new List<Exam>();
 
         public Unit[] ListUnits()
         {
@@ -30,9 +30,10 @@ namespace Logic
         public Module[] ListModules()
         {
             List<Module> modules = new List<Module>();
+
             foreach (Unit unit in ListUnit)
             {
-                foreach(Module module in unit.ListModules())
+                foreach (Module module in unit.ListModules())
                 {
                     if (!modules.Contains(module))
                     {
@@ -40,21 +41,18 @@ namespace Logic
                     }
                 }
             }
-            foreach(Exam exam in exams)
-            {
-                if (!modules.Contains(exam))
-                {
-                    modules.Add(exam.Module);
-                }
-            }
             return modules.ToArray();
         }
 
-        public void AddModule(Module module)
+        public void AddModule(Unit unit, Module module)
         {
-            if (ListUnit.Find((u) => { return u.Name == module.Name; }) != null)
-                throw new Exception("An unit with this name is already exit");
-            ListModule.Add(module);
+            if (unit == null)
+                throw new Exception("Please select a unit.");
+
+            if (unit.Listmodules.Exists(m => m.Name == module.Name))
+                throw new Exception("A module with this name already exists.");
+
+            unit.Listmodules.Add(module);
         }
 
         public void RemoveModule(Module module)
@@ -62,6 +60,9 @@ namespace Logic
             ListModule.Remove(module);
         }
 
-        
+        public void AddExam(Exam exam)
+        {
+            exams.Add(exam);
+        }
     }
 }

@@ -36,7 +36,7 @@
             </Canvas.Resources>
 
             <Button Content="Saisir les matière" Canvas.Left="100" Canvas.Top="90" Click="GoEditUnits"/>
-            <Button Content="Rentrer un examen" Canvas.Right="100" Canvas.Top="90"/>
+            <Button Content="Rentrer un examen" Canvas.Right="100" Canvas.Top="90" Click="GocreateExam"/>
             <Button Content="Afficher les moyennes" Canvas.Left="350" Canvas.Top="350"/>
 
             <Image Source="/Ressource/pngtree-classic-design-of-an-open-book-and-quill-pen-png-image_14269230.png" 
