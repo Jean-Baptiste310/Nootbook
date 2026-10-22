@@ -44,6 +44,11 @@ namespace Logic
             return modules.ToArray();
         }
 
+        public Exam[] ListExam()
+        {
+            return exams.ToArray();
+        }
+
         public void AddModule(Unit unit, Module module)
         {
             if (unit == null)

@@ -67,5 +67,15 @@ namespace TestLogic
             units = noteBook.ListUnits();
             Assert.Empty(units);
         }
+        [Fact]
+        public void TestListExam()
+        {
+            NoteBook noteBook = new NoteBook();
+
+            Exam[] result = noteBook.ListExam();
+
+            Assert.Empty(result);
+        }
+
     }
 }
