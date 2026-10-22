@@ -14,6 +14,31 @@ namespace Logic
             return Listmodules.ToArray();
         }
 
-        
+        public void Add(Module module)
+        {
+            Listmodules.Add(module);
+        }
+
+        public void Remove(Module module) 
+        {
+            Listmodules.Remove(module);
+        }
+
+        public List<AvgScore> ComputeAverages(Exam[] exams)
+        {
+            List<AvgScore> averages = new List<AvgScore>();
+
+            foreach (Module module in ListModules())
+            {
+                AvgScore avg = module.ComputeAverage(exams);
+
+                if (avg != null)
+                {
+                    averages.Add(avg);
+                }
+            }
+
+            return averages;
+        }
     } 
 }

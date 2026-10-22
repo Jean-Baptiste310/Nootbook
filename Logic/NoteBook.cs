@@ -76,5 +76,51 @@ namespace Logic
         {
             exams.Add(exam);
         }
+
+        public List<AvgScore> ComputeScores()
+        {
+            List<AvgScore> scores = new List<AvgScore>();
+
+            Exam[] allExams = ListExam();
+
+            float total = 0;
+            float totalCoef = 0;
+
+            foreach (Unit unit in ListUnit)
+            {
+                List<AvgScore> averages = unit.ComputeAverages(allExams);
+
+                if (averages.Count > 0)
+                {
+                    float unitTotal = 0;
+                    float unitCoef = 0;
+
+                    foreach (AvgScore avg in averages)
+                    {
+                        scores.Add(avg);
+
+                        Module module = (Module)avg.Educationalelement;
+                        unitTotal += avg.Average * module.Coef;
+                        unitCoef += module.Coef;
+                    }
+
+                    if (unitCoef > 0)
+                    {
+                        float unitAverage = unitTotal / unitCoef;
+                        scores.Add(new AvgScore(unitAverage, unit));
+                        total += unitAverage * unitCoef;
+                        totalCoef += unitCoef;
+                    }
+                }
+            }
+
+            if (totalCoef > 0)
+            {
+                EducationalElement general = new EducationalElement();
+                scores.Add(new AvgScore(total / totalCoef, general));
+            }
+
+            return scores;
+        }
     }
 }

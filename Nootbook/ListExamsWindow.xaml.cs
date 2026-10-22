@@ -24,6 +24,7 @@ namespace Nootbook
             InitializeComponent();
             this.notebook = notebook;
             DrawExams();
+            DrawAverages();
         }
 
         private void DrawExams()
@@ -32,6 +33,16 @@ namespace Nootbook
             foreach (Exam e in notebook.ListExam())
             {
                 exams.Items.Add(e);
+            }
+        }
+
+        private void DrawAverages()
+        {
+            averages.Items.Clear();
+
+            foreach (AvgScore score in notebook.ComputeScores())
+            {
+                averages.Items.Add(score);
             }
         }
 

@@ -32,11 +32,11 @@ namespace TestLogic
             u2.Name = "Test";
             u2.Coef = 2;
             Assert.Throws<Exception>(() => { noteBook.AddUnit(u2); });
-            u2.Name="Test2";
+            u2.Name = "Test2";
             noteBook.AddUnit(u2);
             units = noteBook.ListUnits();
             Assert.Equal(2, units.Length);
-            Assert.Same(u2, units[1]); 
+            Assert.Same(u2, units[1]);
         }
         [Fact]
         public void Testremove()
@@ -70,7 +70,7 @@ namespace TestLogic
         [Fact]
         public void TestListExam()
         {
-            Module module = new Module() {Name = " Super module", Coef = 1.0f };
+            Module module = new Module() { Name = " Super module", Coef = 1.0f };
 
             Exam exam = new Exam() { Coef = 1.0f, Teacher = "Miaou ", Note = 20.0f, Module = module };
 
@@ -133,6 +133,79 @@ namespace TestLogic
             Assert.NotNull(result);
             Assert.Equal(15.0f, result.Average);
             Assert.Same(module, result.Educationalelement);
+        }
+
+        [Fact]
+        public void TestComputeAverages()
+        {
+            // Arrange
+            Unit unit = new Unit();
+
+            Module module1 = new Module()
+            {
+                Name = "Maths",
+                Coef = 2.0f
+            };
+
+            Module module2 = new Module()
+            {
+                Name = "Informatique",
+                Coef = 1.0f
+            };
+
+            unit.Add(module1);
+            unit.Add(module2);
+
+            Exam exam1 = new Exam()
+            {
+                Module = module1,
+                Note = 10.0f,
+                Coef = 1.0f,
+                IsAbsent = false
+            };
+
+            Exam exam2 = new Exam()
+            {
+                Module = module1,
+                Note = 20.0f,
+                Coef = 1.0f,
+                IsAbsent = false
+            };
+
+            Exam[] exams = { exam1, exam2 };
+
+            List<AvgScore> averages = unit.ComputeAverages(exams);
+
+            Assert.Single(averages);
+            Assert.Equal(15.0f, averages[0].Average);
+            Assert.Same(module1, averages[0].Educationalelement);
+        }
+
+        [Fact]
+        public void TestComputeScores()
+        {
+            NoteBook nb = new NoteBook();
+            Unit unit = new Unit();
+            Module module = new Module() { Name = "Maths", Coef = 1.0f };
+
+            unit.Add(module);
+            nb.AddUnit(unit);
+
+            nb.AddExam(new Exam()
+            {
+                Module = module,
+                Note = 15.0f,
+                Coef = 1.0f,
+                IsAbsent = false
+            });
+
+            List<AvgScore> scores = nb.ComputeScores();
+
+            Assert.Contains(scores, s =>
+                s.Educationalelement == module && s.Average == 15.0f);
+
+            Assert.Contains(scores, s =>
+                s.Educationalelement == unit && s.Average == 15.0f);
         }
     }
 }
