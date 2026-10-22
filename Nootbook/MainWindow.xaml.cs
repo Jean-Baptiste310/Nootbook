@@ -36,5 +36,11 @@ namespace Nootbook
             Examen window = new Examen(this.notebook);
             window.ShowDialog();
         }
+
+        private void GocreateListExam(object sender, RoutedEventArgs e)
+        {
+            ListExamsWindow third = new ListExamsWindow(this.notebook);
+            third.ShowDialog();
+        }
     }
 }

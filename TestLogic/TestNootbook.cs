@@ -70,11 +70,20 @@ namespace TestLogic
         [Fact]
         public void TestListExam()
         {
-            NoteBook noteBook = new NoteBook();
+            Module module = new Module() {Name = " Super module", Coef = 1.0f };
 
-            Exam[] result = noteBook.ListExam();
+            Exam exam = new Exam() { Coef = 1.0f, Teacher = "Miaou ", Note = 20.0f, Module = module };
 
-            Assert.Empty(result);
+            NoteBook nb = new NoteBook();
+            nb.AddExam(exam);
+
+            Module[] modules = nb.ListModules();
+            Assert.True(modules.Length == 1);
+            Assert.Same(modules[0], module);
+
+            Exam[] exams = nb.ListExam();
+            Assert.True(exams.Length == 1);
+            Assert.Same(exams[0], exam);
         }
 
     }

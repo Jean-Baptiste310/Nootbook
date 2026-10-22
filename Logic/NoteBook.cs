@@ -41,6 +41,13 @@ namespace Logic
                     }
                 }
             }
+            foreach (Exam exam in exams)
+            {
+                if (exam.Module != null && !modules.Contains(exam.Module))
+                {
+                    modules.Add(exam.Module);
+                }
+            }
             return modules.ToArray();
         }
 
