@@ -23,6 +23,7 @@ namespace Nootbook
         {
             InitializeComponent();
             this.notebook = notebook;
+            DrawExams();
         }
 
         private void DrawExams()

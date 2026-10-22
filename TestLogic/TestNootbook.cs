@@ -85,6 +85,54 @@ namespace TestLogic
             Assert.True(exams.Length == 1);
             Assert.Same(exams[0], exam);
         }
+        [Fact]
+        public void TestAvgScore()
+        {
+            Module module = new Module()
+            {
+                Name = "Maths",
+                Coef = 2.0f
+            };
 
+            AvgScore avg = new AvgScore(15.5f, module);
+
+            Assert.Equal(15.5f, avg.Average);
+            Assert.Same(module, avg.Educationalelement);
+            Assert.Equal($"{module} : {avg.Average}", avg.ToString());
+        }
+
+        [Fact]
+        public void TestComputeAverage()
+        {
+            Module module = new Module()
+            {
+                Name = "Maths",
+                Coef = 2.0f
+            };
+
+            Exam exam1 = new Exam()
+            {
+                Module = module,
+                Note = 10.0f,
+                Coef = 1.0f,
+                IsAbsent = false
+            };
+
+            Exam exam2 = new Exam()
+            {
+                Module = module,
+                Note = 20.0f,
+                Coef = 1.0f,
+                IsAbsent = false
+            };
+
+            Exam[] exams = { exam1, exam2 };
+
+            AvgScore result = module.ComputeAverage(exams);
+
+            Assert.NotNull(result);
+            Assert.Equal(15.0f, result.Average);
+            Assert.Same(module, result.Educationalelement);
+        }
     }
 }
